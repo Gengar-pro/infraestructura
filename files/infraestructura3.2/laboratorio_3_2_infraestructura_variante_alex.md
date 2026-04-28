@@ -11,6 +11,7 @@
 - Calatayud Mamani Alex Josue
 
 **Variante:** Calatayud Mamani Alex Josue
+**URL:** https://github.com/Gengar-pro/infraestructura/blob/main/files/infraestructura3.2/laboratorio_3_2_infraestructura_variante_alex.md
 
 ---
 
