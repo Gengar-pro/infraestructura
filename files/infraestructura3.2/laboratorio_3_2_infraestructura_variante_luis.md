@@ -633,17 +633,8 @@ Capa 1 (Física)→  Interfaces virtuales VirtualBox
 
 ## 9. Conclusiones
 
-1. **La arquitectura Router-on-a-Stick es eficiente:** Permite administrar varias VLANs usando una sola interfaz física troncal, reduciendo hardware y simplificando el diseño.
-2. **Netplan ofrece una configuración clara y reproducible:** El enfoque declarativo facilita mantenimiento y auditoría.
-3. **UFW simplifica la seguridad inter-VLAN:** Las reglas se expresan de forma legible y ordenada.
-4. **NAT selectivo mejora el control:** Solo las redes autorizadas acceden a Internet.
-5. **La segmentación protege la infraestructura:** La DMZ queda aislada y las redes internas se mantienen protegidas.
+El laboratorio fue un éxito porque logramos que una sola máquina (el router Ubuntu) controlara el tráfico de toda la organización. Lo más valioso fue ver en la práctica cómo las VLANs realmente separan los departamentos; es satisfactorio ver que, aunque todas las máquinas están conectadas al mismo "switch virtual", no pueden hablar entre sí a menos que nosotros lo permitamos en el firewall.
 
----
+Lo que más "guerra" dio y donde hubo que tener más cuidado fue en la configuración del Netplan; un solo espacio mal puesto en el archivo YAML o una indentación incorrecta te deja sin red en un segundo. También fue clave entender que el acceso a internet no es automático: si no activas el reenvío de paquetes (forwarding) y el enmascaramiento en UFW, las máquinas se quedan aisladas.
 
-## 10. Cierre de la variante
-
-Este documento corresponde a la Luis y mantiene el mismo contenido técnico base para su uso académico y presentación formal.
-
-**Documento preparado para:** Luis Fernando Quispe Sullca  
-**Variante Luis**
+En resumen, me queda claro que la seguridad de una red depende totalmente del orden. No se trata solo de conectar cables o crear interfaces, sino de saber administrar las reglas del firewall para que cada área tenga exactamente el acceso que necesita y nada más.

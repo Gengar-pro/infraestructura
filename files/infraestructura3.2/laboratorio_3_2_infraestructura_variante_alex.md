@@ -633,17 +633,13 @@ Capa 1 (Física)→  Interfaces virtuales VirtualBox
 
 ## 9. Conclusiones
 
-1. **La arquitectura Router-on-a-Stick es eficiente:** Permite administrar varias VLANs usando una sola interfaz física troncal, reduciendo hardware y simplificando el diseño.
-2. **Netplan ofrece una configuración clara y reproducible:** El enfoque declarativo facilita mantenimiento y auditoría.
-3. **UFW simplifica la seguridad inter-VLAN:** Las reglas se expresan de forma legible y ordenada.
-4. **NAT selectivo mejora el control:** Solo las redes autorizadas acceden a Internet.
-5. **La segmentación protege la infraestructura:** La DMZ queda aislada y las redes internas se mantienen protegidas.
-
----
-
-## 10. Cierre de la variante
-
-Este documento corresponde a la Alex y mantiene el mismo contenido técnico base para su uso académico y presentación formal.
-
-**Documento preparado para:** Calatayud Mamani Alex Josue  
-**Variante Alex**
+1. La arquitectura Router-on-a-Stick demostró ser viable en entornos virtualizados:
+Implementar múltiples VLANs sobre una sola interfaz troncal (enp0s8) en VirtualBox fue posible gracias al etiquetado 802.1Q, eliminando la necesidad de hardware adicional y centralizando el enrutamiento inter-VLAN en una única máquina Linux.
+2. Netplan permite una gestión de red declarativa y predecible:
+Definir las subinterfaces VLAN directamente en el archivo YAML de Netplan garantiza que la configuración se aplique de forma consistente en cada arranque, facilitando la revisión y el mantenimiento sin necesidad de comandos manuales adicionales.
+3. El orden y la especificidad de las reglas UFW son críticos para la seguridad inter-VLAN:
+Durante la práctica se comprobó que reglas globales de ICMP insertas automáticamente por UFW ignoraban las políticas de ufw route, permitiendo ping entre VLANs no autorizadas. Solo eliminando la regla icmptype 8 genérica se logró que las restricciones funcionaran correctamente.
+4. El valor de DEFAULT_FORWARD_POLICY="DROP" va más allá de una buena práctica:
+Sin este cambio, el kernel reenvía libremente el tráfico entre interfaces sin importar las reglas definidas. Establecer la política de FORWARD en DROP fue el punto de inflexión que hizo efectivo todo el esquema de segmentación.
+5. La combinación de NAT selectivo y segmentación por VLAN replica un modelo empresarial real:
+Restringir el acceso a Internet únicamente a TI y Contabilidad, mientras Ventas y la DMZ permanecen aisladas, refleja políticas de seguridad aplicadas en organizaciones reales donde no todos los segmentos requieren ni deben tener salida externa.
