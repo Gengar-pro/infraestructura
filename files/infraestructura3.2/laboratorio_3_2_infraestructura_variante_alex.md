@@ -10,7 +10,7 @@
 - Luis Fernando Quispe Sullca
 - Calatayud Mamani Alex Josue
 
-**Variante asignada a:** Calatayud Mamani Alex Josue
+**Variante:** Calatayud Mamani Alex Josue
 
 ---
 
@@ -86,7 +86,6 @@ ip a
 
 **Explicación:** `ip a` (abreviación de `ip addr show`) lista las interfaces de red, sus direcciones IP, su estado y sus flags. Sirve para comprobar el punto de partida antes de realizar cualquier cambio.
 
-![Captura de pantalla: Salida de ip a en el Router](img_router_ip_a.png)
 
 ---
 
@@ -187,7 +186,6 @@ sudo netplan apply
 
 `netplan apply` aplica la configuración declarativa de red sin reiniciar el sistema.
 
-![Captura de pantalla: Resultado de netplan apply y verificación de VLANs](img_netplan_apply.png)
 
 ---
 
@@ -287,7 +285,6 @@ sudo ufw status verbose
 sudo ufw status numbered
 ```
 
-![Captura de pantalla: Listado de reglas UFW con ufw status verbose](img_ufw_status.png)
 
 ---
 
@@ -323,7 +320,6 @@ sudo ufw reload
 
 `ufw reload` recarga la configuración sin reiniciar el sistema.
 
-![Captura de pantalla: Contenido de before.rules con bloque NAT](img_before_rules.png)
 
 ---
 
@@ -512,7 +508,6 @@ ip addr show
 
 Confirmar que aparecen `vlan10`, `vlan20`, `vlan30` y `vlan40` con sus direcciones correctas.
 
-![Captura de pantalla: Sub-interfaces VLAN activas en el Router](img_router_vlans_activas.png)
 
 ### 6.2 Pruebas de conectividad desde clientes Alpine
 
@@ -537,8 +532,6 @@ traceroute 8.8.8.8
 nslookup google.com
 ```
 
-![Captura de pantalla: Ping exitoso desde Contabilidad a internet](img_ping_contabilidad_internet.png)
-![Captura de pantalla: Ping fallido desde Ventas a internet](img_ping_ventas_internet.png)
 
 ### 6.3 Pruebas de SSH entre VLANs
 
@@ -555,8 +548,6 @@ ssh 192.168.30.2
 ssh 192.168.40.2
 ```
 
-![Captura de pantalla: Prueba SSH desde TI hacia DMZ](img_ssh_ti_dmz.png)
-![Captura de pantalla: Prueba SSH desde Ventas hacia Contabilidad (denegado)](img_ssh_ventas_contabilidad.png)
 
 ---
 
