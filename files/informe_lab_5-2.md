@@ -3,10 +3,9 @@
 **Universidad San Francisco Xavier de Chuquisaca**  
 **Asignatura:** Infraestructura, Plataformas Tecnológicas y Redes (SIS313)  
 **Docente:** Ing. Marcelo Quispe Ortega  
-**Estudiante:** Luis F.  
+**Estudiante:** Luis Fernando Quispe Sullca  
 **Semestre:** 1/2026  
-**Fecha:** 21 de Mayo de 2026  
-
+**Fecha:** 21 de Mayo de 2026                                                          **Link de GitHub** https://github.com/Gengar-pro/infraestructura/edit/main/files/informe_lab_5-2.md
 ---
 
 ## 🎯 Objetivo
