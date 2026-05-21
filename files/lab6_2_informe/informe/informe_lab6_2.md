@@ -4,6 +4,7 @@
 **Asignatura:** Infraestructura, Plataformas Tecnológicas y Redes (SIS313)  
 **Docente:** Ing. Marcelo Quispe Ortega  
 **Estudiante:** Luis Fernando Quispe Sullca
+
 **Semestre:** 1/2026  
 **Fecha:** 21 de mayo de 2026  
 
