@@ -37,7 +37,8 @@ Se editó el archivo `/etc/netplan/50-cloud-init.yaml` en la VM Server asignando
 sudo nano /etc/netplan/50-cloud-init.yaml
 ```
 
-![Netplan Server](ej1_01_netplan_server.png)
+<img width="304" height="233" alt="ej1_01_netplan_server" src="https://github.com/user-attachments/assets/fe22da53-ccbe-44c5-8414-bba359a5f73b" />
+
 
 La interfaz `enp0s3` usa DHCP para salida a Internet (NAT) y `enp0s8` recibe la IP estática `192.168.30.2/29` para la red interna del laboratorio.
 
@@ -50,8 +51,8 @@ Se configuró la VM Attacker con IP `192.168.30.3/29` apuntando al Server como g
 ```bash
 sudo nano /etc/netplan/50-cloud-init.yaml
 ```
+<img width="380" height="329" alt="ej1_02_netplan_attacker" src="https://github.com/user-attachments/assets/8e4b59ac-eb48-472e-8133-da1dff5a50b6" />
 
-![Netplan Attacker](ej1_02_netplan_attacker.png)
 
 La ruta `default via 192.168.30.2` indica que todo el tráfico del Attacker pasa por el Server, que actúa como router/gateway.
 
@@ -65,7 +66,8 @@ Se ejecutó `ip a` en la VM Attacker para confirmar que la IP `192.168.30.3/29` 
 ip a
 ```
 
-![ip a Attacker](ej1_03_ipa_attacker.png)
+<img width="773" height="329" alt="ej1_03_ipa_attacker" src="https://github.com/user-attachments/assets/a5a6cfa2-7a38-429d-8f48-5dcad2c2a669" />
+
 
 La interfaz `enp0s8` muestra la IP `192.168.30.3/29` activa, confirmando la configuración correcta de red en la VM Attacker.
 
@@ -81,7 +83,8 @@ sudo netplan apply
 ip a
 ```
 
-![Netplan Apply Server](ej1_04_netplan_apply_server.png)
+<img width="773" height="363" alt="ej1_04_netplan_apply_server" src="https://github.com/user-attachments/assets/bc7e6dd2-b13a-43e8-b6e9-511a7e3739f5" />
+
 
 La interfaz `enp0s8` del Server muestra `inet 192.168.30.2/29`, confirmando que la red interna está correctamente configurada.
 
@@ -96,7 +99,8 @@ sudo nano /etc/sysctl.conf
 sudo sysctl -p
 ```
 
-![IP Forward](ej1_05_ipforward.png)
+<img width="773" height="72" alt="ej1_05_ipforward" src="https://github.com/user-attachments/assets/5080931c-9100-4e2f-9ef4-64fa593a4e67" />
+
 
 La salida `net.ipv4.ip_forward = 1` confirma que el kernel está reenviando paquetes entre interfaces, requisito para que el Attacker tenga conectividad a través del Server.
 
@@ -112,7 +116,8 @@ sudo apt install iptables-persistent
 sudo netfilter-persistent save
 ```
 
-![NAT Masquerade](ej1_06_nat_masquerade.png)
+<img width="773" height="737" alt="ej1_06_nat_masquerade" src="https://github.com/user-attachments/assets/2a0c9b1d-a0ee-48e2-9368-445b6b128365" />
+
 
 La instalación de `iptables-persistent` y la ejecución de `netfilter-persistent save` garantizan que las reglas NAT sobrevivan reinicios del servidor.
 
@@ -127,7 +132,8 @@ ping -c 3 192.168.30.2
 ping -c 3 8.8.8.8
 ```
 
-![Ping](ej1_07_ping.png)
+<img width="773" height="293" alt="ej1_07_ping" src="https://github.com/user-attachments/assets/e4663d2a-42cb-499f-8a98-0af2f3c0fad1" />
+
 
 Ambos pings son exitosos con 0% de pérdida de paquetes, confirmando que la red interna funciona y que el Server enruta correctamente el tráfico del Attacker hacia Internet.
 
@@ -145,7 +151,8 @@ sudo systemctl enable --now nginx
 sudo systemctl enable --now ssh
 ```
 
-![Instalación Nginx SSH](ej2_01_instalacion_nginx_ssh.png)
+<img width="773" height="149" alt="ej2_01_instalacion_nginx_ssh" src="https://github.com/user-attachments/assets/077cad76-940e-43c2-859d-e6b0c48b0575" />
+
 
 Los servicios `nginx` y `ssh` quedaron habilitados con `enable --now`, lo que significa que arrancan automáticamente en cada inicio del sistema.
 
@@ -161,7 +168,8 @@ sudo bash -c 'echo "<p>Objetivo de simulación de intrusiones</p>" >> /var/www/h
 cat /var/www/html/index.html
 ```
 
-![Sitio Web](ej2_02_sitio_web.png)
+<img width="773" height="102" alt="ej2_02_sitio_web" src="https://github.com/user-attachments/assets/a04ec900-16e0-4e88-85a3-9dd58e8d546f" />
+
 
 El archivo `index.html` contiene el contenido de prueba que Nginx servirá como objetivo del reconocimiento web en el Ejercicio 5.
 
@@ -176,7 +184,8 @@ sudo systemctl status nginx && sudo systemctl status sshd
 sudo ss -tulnp | grep -E "nginx|sshd"
 ```
 
-![Status Nginx SSH](ej2_03_status_nginx_ssh.png)
+<img width="1062" height="648" alt="ej2_03_status_nginx_ssh" src="https://github.com/user-attachments/assets/6678796b-afc7-4fa7-88c2-f083f127c1ac" />
+
 
 Nginx está `active (running)` en el puerto 80 y SSH en el puerto 22, ambos escuchando en todas las interfaces. Los logs del servicio SSH muestran las conexiones previas desde la PC anfitriona vía NAT.
 
@@ -193,8 +202,8 @@ sudo apt install fail2ban -y
 sudo systemctl enable --now fail2ban
 sudo systemctl status fail2ban.service
 ```
+<img width="1062" height="304" alt="ej3_01_instalacion_fail2ban" src="https://github.com/user-attachments/assets/ea69dc99-8f71-4ca6-bcfe-730c43248649" />
 
-![Instalación Fail2ban](ej3_01_instalacion_fail2ban.png)
 
 Fail2ban está `active (running)` con el servidor listo (`Server ready`), monitoreando los logs del sistema en tiempo real.
 
@@ -209,7 +218,8 @@ sudo nano /etc/fail2ban/jail.local
 sudo cat /etc/fail2ban/jail.local
 ```
 
-![jail.local](ej3_02_jail_local.png)
+<img width="1062" height="345" alt="ej3_02_jail_local" src="https://github.com/user-attachments/assets/b34553a9-c765-45c8-a91d-d78a62d86ce0" />
+
 
 La configuración establece: `bantime=600` (10 min de bloqueo), `findtime=600` (ventana de detección), `maxretry=3` (máximo 3 intentos). Se habilitaron las jails `[sshd]` y `[nginx-http-auth]`.
 
@@ -224,7 +234,8 @@ sudo fail2ban-client status
 sudo fail2ban-client status sshd
 ```
 
-![Jails Activas](ej3_03_jails_activas.png)
+<img width="1062" height="285" alt="ej3_03_jails_activas" src="https://github.com/user-attachments/assets/b9b8f4ac-d8cf-45c1-9753-5a45959b47c2" />
+
 
 Fail2ban muestra 2 jails activas: `nginx-http-auth` y `sshd`. La jail `sshd` aparece con 0 intentos fallidos y 0 IPs baneadas, estado inicial antes del ataque.
 
@@ -240,7 +251,8 @@ Desde la VM Attacker se lanzó el ataque de fuerza bruta contra el SSH del Serve
 hydra -l luisf -P passwords.txt ssh://192.168.30.2 -t 4 -V
 ```
 
-![Hydra Ataque](ej4_01_hydra_ataque.png)
+<img width="1565" height="285" alt="ej4_01_hydra_ataque" src="https://github.com/user-attachments/assets/bd63b7e3-c275-4b64-b698-9f9f856575a6" />
+
 
 Hydra intentó 10 contraseñas del diccionario contra el usuario `luisf` en `192.168.30.2:22`. Todos los intentos fallaron (`0/0`), generando el tráfico malicioso que Fail2ban detectará.
 
@@ -255,7 +267,8 @@ sudo grep "Failed password" /var/log/auth.log
 sudo grep "Failed password" /var/log/auth.log | wc -l
 ```
 
-![auth.log Failed](ej4_02_authlog_failed.png)
+<img width="1565" height="221" alt="ej4_02_authlog_failed" src="https://github.com/user-attachments/assets/52db17d1-1479-4b64-8634-91c7067a0b5b" />
+
 
 El log registra 10 intentos de contraseña fallidos desde `192.168.30.3` en un intervalo de 2 segundos (16:28:42 a 16:28:44), patrón típico de un ataque automatizado de fuerza bruta.
 
@@ -270,7 +283,8 @@ sudo grep "Failed password" /var/log/auth.log | wc -l
 sudo fail2ban-client status sshd
 ```
 
-![Fail2ban Banned](ej4_03_fail2ban_banned.png)
+<img width="1565" height="321" alt="ej4_03_fail2ban_banned" src="https://github.com/user-attachments/assets/d74390be-ee31-40f5-bf03-edab838c27a8" />
+
 
 Fail2ban registra: `Total failed: 8`, `Currently banned: 1`, `Banned IP list: 192.168.30.3`. La IP atacante fue bloqueada automáticamente tras superar el `maxretry=3` dentro de la ventana `findtime=600`.
 
@@ -285,7 +299,8 @@ sudo iptables -L -n | grep f2b
 sudo fail2ban-client set sshd unbanip 192.168.30.3
 ```
 
-![iptables y desbaneo](ej4_04_iptables_desbaneo.png)
+<img width="512" height="77" alt="ej4_04_iptables_desbaneo" src="https://github.com/user-attachments/assets/3f5a040f-2529-43c4-aa24-0bfed84d5d24" />
+
 
 La regla `f2b` en iptables bloqueó el tráfico de `192.168.30.3`. El desbaneo devuelve `1` confirmando que la IP fue removida exitosamente de la lista de bloqueados.
 
@@ -301,7 +316,8 @@ Desde la VM Attacker se realizó un escaneo de servicios para identificar puerto
 nmap -sV 192.168.30.2
 ```
 
-![Nmap](ej5_01_nmap.png)
+<img width="671" height="221" alt="ej5_01_nmap" src="https://github.com/user-attachments/assets/337f8d42-9df0-44a3-a93e-bb1761e9ed8e" />
+
 
 Nmap detectó los puertos **22/tcp (OpenSSH 9.6p1)** y **80/tcp (Nginx 1.24.0)** abiertos. Esta información simula la fase de reconocimiento de un atacante real, identificando servicios y versiones para planificar el ataque.
 
@@ -316,7 +332,8 @@ sudo grep " 404 " /var/log/nginx/access.log | head -20
 sudo grep " 404 " /var/log/nginx/access.log | awk '{print $1}' | sort | uniq -c | sort -nr
 ```
 
-![access.log 404](ej5_02_access_log_404.png)
+<img width="1330" height="375" alt="ej5_02_access_log_404" src="https://github.com/user-attachments/assets/93b9fcf1-dc01-4434-a678-ff847ff12c44" />
+
 
 El log muestra 54 peticiones 404 desde `192.168.30.3`: 4 del Nmap Scripting Engine (rutas como `/HNAP1`, `/sdk`, `/evox/about`) y las primeras del loop curl (`/admin1` a `/admin16`). El conteo final confirma **54 peticiones** en total desde la IP atacante.
 
@@ -333,7 +350,8 @@ for i in $(seq 1 50); do
 done
 ```
 
-![curl loop](ej5_03_curl_loop.png)
+<img width="1330" height="823" alt="ej5_03_curl_loop" src="https://github.com/user-attachments/assets/86877817-b68b-468f-a593-8b71b581ef83" />
+
 
 Las 50 peticiones retornan código `404` para cada ruta `/admin1` a `/admin50`. Este patrón de peticiones consecutivas a rutas incrementales es un indicador claro de reconocimiento automatizado.
 
@@ -351,8 +369,8 @@ sudo lastb | head -20
 sudo grep "Failed password" /var/log/auth.log | tail -20
 sudo grep " 404 " /var/log/nginx/access.log | awk '{print $1}' | sort | uniq -c | sort -nr | head -10
 ```
+<img width="1330" height="435" alt="ej6_01_identificar" src="https://github.com/user-attachments/assets/fa06df97-c605-4a9d-b4e6-7a50a9d54d2e" />
 
-![Fase Identificar](ej6_01_identificar.png)
 
 **Hallazgos:**
 - `lastb` muestra 8 intentos de login fallidos desde `192.168.30.3` el 21/05/2026 a las 16:28
@@ -384,7 +402,8 @@ Se verificó que no hubo accesos exitosos desde la IP atacante.
 sudo grep "Accepted" /var/log/auth.log
 ```
 
-![Fase Erradicar](ej6_02_erradicar_accepted.png)
+<img width="1330" height="102" alt="ej6_02_erradicar_accepted" src="https://github.com/user-attachments/assets/19ff53dd-fa20-449e-8ea0-00476ab7078e" />
+
 
 Los únicos accesos aceptados son desde `10.0.2.2` (PC anfitriona vía NAT port forwarding). **Ningún acceso exitoso** proviene de la IP atacante `192.168.30.3`, confirmando que el servidor no fue comprometido.
 
@@ -399,7 +418,8 @@ sudo systemctl status sshd nginx fail2ban
 sudo fail2ban-client set sshd unbanip 192.168.30.3
 ```
 
-![Fase Recuperar](ej6_03_recuperar_servicios.png)
+<img width="1330" height="863" alt="ej6_03_recuperar_servicios" src="https://github.com/user-attachments/assets/2cc34043-6124-4dd9-93c1-8fe1fd9cd0a1" />
+
 
 Los tres servicios están en estado `active (running)`: SSH desde las 15:57 UTC, Nginx desde las 16:13 UTC y Fail2ban desde las 16:23 UTC. El servidor operó con normalidad durante y después del ataque.
 
@@ -413,7 +433,8 @@ Se creó el registro oficial del incidente en el servidor.
 nano ~/incidente_001.md
 ```
 
-![Documentar Incidente](ej6_04_documentar_incidente.png)
+<img width="1330" height="863" alt="ej6_04_documentar_incidente" src="https://github.com/user-attachments/assets/df04ddcc-f2b1-489e-bfe7-a3a45e2ada97" />
+
 
 El archivo `incidente_001.md` documenta todos los campos del incidente: fecha, hora, IP atacante, servicios afectados, tipo de ataque, intentos fallidos, accesos exitosos, acciones tomadas y estado final.
 
