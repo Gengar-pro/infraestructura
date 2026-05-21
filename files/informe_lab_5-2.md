@@ -5,7 +5,9 @@
 **Docente:** Ing. Marcelo Quispe Ortega  
 **Estudiante:** Luis Fernando Quispe Sullca  
 **Semestre:** 1/2026  
-**Fecha:** 21 de Mayo de 2026                                                          **Link de GitHub** https://github.com/Gengar-pro/infraestructura/edit/main/files/informe_lab_5-2.md
+**Fecha:** 21 de mayo de 2026  
+**Link de GitHub:** https://github.com/Gengar-pro/infraestructura/edit/main/files/informe_lab_5-2.md
+
 ---
 
 ## 🎯 Objetivo
