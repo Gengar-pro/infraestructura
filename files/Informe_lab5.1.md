@@ -6,7 +6,7 @@
 **Integrante 1:** Alex Calatayud Mamani — VM Web  
 **Integrante 2:** Luis Quispe Sullca — VM DB  
 **Fecha:** Mayo 2026  
-**Link de GitHub** https://github.com/Gengar-pro/infraestructura/edit/main/files/Informe_lab5.1.md
+**Link de GitHub:** https://github.com/Gengar-pro/infraestructura/edit/main/files/Informe_lab5.1.md
 
 ---
 
@@ -611,7 +611,7 @@ ssh -p 2222 luisf@10.173.175.24 # Acceso concedido ✅
 ---
 
 ## 7. Análisis de resultados
-- aclarar que el N/A da a conocer que dicha tarea no correspondia a la maquina
+- Aclarar que el N/A da a conocer que dicha tarea no correspondia a la maquina
 
 | Ítem verificado | VM Web | VM DB |
 |---|---|---|
