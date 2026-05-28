@@ -1,12 +1,11 @@
 # Informe - Laboratorio 6.1: Automatización de Tareas Administrativas con Bash
 
-**Universidad San Francisco Xavier de Chuquisaca**  
-**Asignatura:** Infraestructura, Plataformas Tecnológicas y Redes (SIS313)  
+**Universidad Mayor, Real y Pontificia de San Francisco Xavier de Chuquisaca** **Asignatura:** Infraestructura, Plataformas Tecnológicas y Redes (SIS313)  
 **Docente:** Ing. Marcelo Quispe Ortega  
 **Estudiante:** Luis Fernando Quispe Sullca  
 **Semestre:** 1/2026  
-**Fecha:** 22 de mayo de 2026
-**Link de Git Hub:** https://github.com/Gengar-pro/infraestructura/edit/main/files/informe_lab6_1.md
+**Fecha:** 22 de mayo de 2026  
+**Enlace de GitHub:** (https://github.com/Gengar-pro/infraestructura/blob/main/files/informe_lab6_1.md)
 
 ---
 
