@@ -6,6 +6,7 @@
 **Estudiante:** Luis Fernando Quispe Sullca  
 **Semestre:** 1/2026  
 **Fecha:** 22 de mayo de 2026
+**Link de Git Hub:** https://github.com/Gengar-pro/infraestructura/edit/main/files/informe_lab6_1.md
 
 ---
 
